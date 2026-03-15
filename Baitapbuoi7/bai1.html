@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trung tâm cấu hình giao diện</title>
+    <style>
+        body{
+            margin:0;
+            background:#2f3136;
+            font-family:Arial, sans-serif;
+        }
+        /* panel */
+        .khung{
+            min-height:100vh;
+            background:white;
+            border:2px solid #333;
+        }
+
+        .dau-trang{
+            background:#e67e22;
+            color:white;
+            font-size:24px;
+            font-weight:bold;
+            padding:14px;
+        }
+
+        .phan-chon{
+            padding:20px;
+        }
+
+        .muc{
+            margin-bottom:18px;
+        }
+
+        .muc h3{
+            margin:0 0 8px 0;
+        }
+
+        .muc label{
+            margin-right:12px;
+            cursor:pointer;
+        }
+
+        .ket-qua{
+            border-top:2px solid #ddd;
+        }
+
+        .dong{
+            padding:10px 12px;
+            color:#9a9a9a;
+        }
+        #light:checked ~ .khung label[for="light"],
+        #dark:checked ~ .khung label[for="dark"],
+        #red:checked~ .khung label[for="red"],
+        #blue:checked~ .khung label[for="blue"],
+        #green:checked~ .khung label[for="green"],
+        #vi:checked~ .khung label[for="vi"],
+        #en:checked~ .khung label[for="en"],
+        #advanced:checked ~ .khung label[for="advanced"],
+        #eco:checked ~ .khung label[for="eco"],
+        #warning:checked ~.khung label[for="warning"]{
+            background:#fff3cd;
+            color:#000;
+            padding:4px 8px;
+            border-radius:6px;
+            cursor:pointer;
+        }
+        /* light - dark */
+        #light:checked ~ .khung .mo-ta-light{
+            background:#fff8c6;
+            color:black;
+            font-weight:bold;
+        }
+
+        #dark:checked ~ .khung .mo-ta-dark{
+            background:#333;
+            color:white;
+            font-weight:bold;
+        }
+
+        #red:checked ~ .khung .mo-ta-red{
+            background:#ffdede;
+            color:#b30000;
+            font-weight:bold;
+        }
+
+        #blue:checked ~ .khung .mo-ta-blue{
+            background:#dce8ff;
+            color:#0044cc;
+            font-weight:bold;
+        }
+
+        #green:checked ~ .khung .mo-ta-green{
+            background:#e0f8e5;
+            color:#0a8a32;
+            font-weight:bold;
+        }
+
+        /* ngon ngu*/
+        #vi:checked ~ .khung .mo-ta-vi{
+            color:#0a8a32;
+            font-weight:bold;
+            font-size:18px;
+        }
+
+        #en:checked ~ .khung .mo-ta-en{
+            color:#0044cc;
+            font-weight:bold;
+            font-size:18px;
+        }
+
+        /* cac tuy chon*/
+        #advanced:checked ~ .khung .mo-ta-advanced{
+            background:#fff8c6;
+            color:#7a5a00;
+            font-weight:bold;
+        }
+
+        #eco:checked ~ .khung .mo-ta-eco{
+            background:#dfffe7;
+            color:#007a26;
+            font-weight:bold;
+        }
+
+        #warning:checked ~ .khung .mo-ta-warning{
+            background:#ffdede;
+            color:#a80000;
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+    <input type="radio" name="theme" id="light"hidden>
+    <input type="radio" name="theme" id="dark"hidden>
+    <input type="radio" name="color" id="red"hidden>
+    <input type="radio" name="color" id="blue"hidden>
+    <input type="radio" name="color" id="green"hidden>
+    <input type="radio" name="lang" id="vi" hidden>
+    <input type="radio" name="lang" id="en"hidden>
+    <input type="checkbox" id="advanced"hidden>
+    <input type="checkbox" id="eco" hidden>
+    <input type="checkbox" id="warning"hidden>
+
+    <div class="khung">
+        <div class="dau-trang">Trung tâm cấu hình giao diện (Demo)</div>
+
+        <div class="phan-chon">
+            <div class="muc">
+                <h3>Chọn giao diện (Theme):</h3>
+                <label for="light">Light</label>
+                <label for="dark">Dark</label>
+            </div>
+
+            <div class="muc">
+                <h3>Chọn màu chủ đạo (Color):</h3>
+                <label for="red">Red</label>
+                <label for="blue">Blue</label>
+                <label for="green">Green</label>
+            </div>
+
+            <div class="muc">
+                <h3>Chọn ngôn ngữ (Language):</h3>
+                <label for="vi">VI</label>
+                <label for="en">EN</label>
+            </div>
+
+            <div class="muc">
+                <h3>Tùy chọn bổ sung:</h3>
+                <label for="advanced">Hiển thị mô tả nâng cao</label>
+                <label for="eco">Bật chế độ Eco</label>
+                <label for="warning">Hiển thị cảnh báo quan trọng</label>
+            </div>
+        </div>
+
+        <div class="ket-qua">
+            <div class="dong mo-ta-light">Theme Light: Giao diện sáng, chữ đen.</div>
+            <div class="dong mo-ta-dark">Theme Dark: Giao diện tối, chữ sáng.</div>
+            
+            <div class="dong mo-ta-red">Màu Red: được nhấn mạnh khi chọn Red.</div>
+            <div class="dong mo-ta-blue">Màu Blue: được nhấn mạnh khi chọn Blue.</div>
+            <div class="dong mo-ta-green">Màu Green: được nhấn mạnh khi chọn Green.</div>
+
+            <div class="dong mo-ta-vi">[VI] Xin chào bạn! Khi chọn VI, dòng này rõ hơn.</div>
+            <div class="dong mo-ta-en">[EN] Hello, world! Khi chọn EN, dòng này rõ hơn.</div>
+
+            <div class="dong mo-ta-advanced">Mô tả nâng cao: giải thích kỹ hơn về các lựa chọn đang ảnh hưởng giao diện.</div>
+            <div class="dong mo-ta-eco">Chế độ Eco: mô phỏng trạng thái tiết kiệm tài nguyên cho giao diện.</div>
+            <div class="dong mo-ta-warning">Cảnh báo quan trọng: khu vực dùng để nhấn mạnh thông tin hệ thống.</div>
+        </div>
+    </div>
+</body>
+</html>
