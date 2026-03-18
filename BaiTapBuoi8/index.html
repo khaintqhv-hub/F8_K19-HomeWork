@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Customizer</title>
+    <style>
+        *{
+            box-sizing:border-box;
+        }
+
+        body{
+            margin:0;
+            background:#eee;
+            min-height:100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        /* hidden input */
+        .state-input{
+            display:none;
+        }
+
+        /*main layout*/
+        .layout{
+            width:94vw;
+            min-height:calc(100vh - 24px);
+            margin:12px auto;
+            background: White;
+            padding:12px;
+            display:table;
+        }
+
+        .control-panel{
+            display:table-cell;
+            vertical-align:top;
+            width:30%;
+            min-height:calc(100vh - 48px);
+            background:#f5f5f5;
+            padding:14px;
+            margin-right:2%;
+        }
+
+        .preview-area{
+            display:table-cell;
+            width: calc(70% -8px);
+            background:White;
+            vertical-align:top;
+            width:67%;
+            min-height:calc(100vh - 48px);
+        }
+
+        /*control panel*/
+        .panel-title{
+            margin:0 0 16px 0;
+            font-size:1.1rem;
+            font-weight:700;
+        }
+
+        .control-group{
+            margin-bottom:16px;
+        }
+
+        .control-group >h3{
+            margin:0 0 8px 0;
+            font-size:1rem;
+            font-weight:700;
+        }
+
+        .control-group label{
+            display:inline-block;
+            background:#ddd;
+            padding:0.45em 0.8em;
+            margin-right:6px;
+            margin-bottom:6px;
+            cursor:pointer;
+            font-weight:600;
+        }
+
+        /*preview*/
+        .preview-tile{
+            margin:0 0 8px 0;
+            font-size:1rem;
+            font-weight:700;
+        }
+
+        .profile-card{
+            width:100%;
+            min-height:calc(100vh - 90px);
+            background: lightblue;
+            padding:28px 24px;
+            text-align:center;
+        }
+        
+        .profile-name{
+            margin:0 0 10px 0;
+            font-size:2.75rem;
+            line-height:1.2;
+            font-weight:700;
+            color:blue;
+            text-transform:uppercase;
+        }
+
+        .profile-job{
+            margin:0 0 18px 0;
+            font-size:1.3rem;
+            line-height:1.5;
+            letter-spacing:0.18em;
+        }
+
+        .profile-desc{
+            width:88%;
+            margin:0 auto 18px auto;
+            font-size:1.125rem;
+            line-height:2;
+        }
+
+        .list-title{
+            margin:10px 0 8px 0;
+            font-size:0.95rem;
+            font-weight:700;
+        }
+
+        .skill-list,
+        .hobby-list{
+            margin-bottom:16px;
+        }
+
+        .skill-list >span,
+        .hobby-list >span{
+            display:inline-block;
+            background:#f0f0f0;
+            padding:0.45em 0.8em;
+            margin-right:6px;
+            margin-bottom:6px;
+            font-size:0.85rem;
+        }
+
+        .btn-contact{
+            display:inline-block;
+            background:blue;
+            color:white;
+            text-decoration:none;
+            padding:0.75em 1.3em;
+            font-size:0.9rem;
+            font-weight:700;
+        }
+
+        #bg-light:checked~.layout .control-panel label[for="bg-light"],
+        #bg-gray:checked~.layout .control-panel label[for="bg-gray"]
+        #bg-yellow:checked~.layout .control-panel label[for="bg-yellow"],
+        #bg-blue:checked~.layout .control-panel label[for="bg-blue"],
+        #bg-pink:checked~.layout .control-panel label[for="bg-pink"],
+        #name-small:checked~.layout .control-panel label[for="name-small"],
+        #name-medium:checked~.layout .control-panel label[for="name-medium"],
+        #name-name-large:checked~.layout .control-panel label[for="name-large"],
+        #style-normal:checked~.layout .control-panel label[for="style-normal"],
+        #style-upper:checked~.layout .control-panel label[for="style-upper"],
+        #color-dark:checked~.layout .control-panel label[for="color-dark"],
+        #color-blue:checked~.layout .control-panel label[for="color-blue"],
+        #color-green:checked~.layout .control-panel label[for="color-green"],
+        #color-red:checked~.layout .control-panel label[for="color-red"],
+        #align-center:checked~.layout .control-panel label[for="align-center"],
+        #align-right:checked~.layout .control-panel label[for="align-right"],
+        #job-small:checked~.layout .control-panel label[for="job-small"],
+        #job-medium:checked~.layout .control-panel label[for="job-medium"],
+        #job-large:checked~.layout .control-panel label[for="job-large"],
+        #space-tight:checked~.layout .control-panel label[for="space-tight"],
+        #space-normal:checked~.layout .control-panel label[for="space-normal"],
+        #space-wider:checked~.layout .control-panel label[for="space-wider"],
+        #desc-small:checked~.layout .control-panel label[for="desc-small"],
+        #desc-medium:checked~.layout .control-panel label[for="desc-medium"],
+        #desc-large:checked~.layout .control-panel label[for="desc-large"],
+        #line-tight:checked~.layout .control-panel label[for="line-tight"],
+        #line-normal:checked~.layout .control-panel label[for="line-normal"],
+        #line-loose:checked~.layout .control-panel label[for="line-loose"],
+        #btn-dark:checked~.layout .control-panel label[for="btn-dark"],
+        #btn-blue:checked~.layout .control-panel label[for="btn-blue"],
+        #btn-light:checked~.layout .control-panel label[for="btn-light"]{
+            background:#cfcfcf;
+            color:black;
+            font-weight:700;
+
+        }
+        
+        /* background-theme */
+        #bg-light:checked ~.layout .profile-card{
+            background:white;
+        }
+
+        #bg-gray:checked~.layout .profile-card{
+            background:lightgray;
+        }
+        
+        #bg-yellow:checked~.layout .profile-card{
+            background:lightyellow;
+        }
+
+        #bg-blue:checked~ .layout .profile-card{
+            background:lightblue;
+        }
+
+        #bg-pink:checked~.layout .profile-card{
+            background:pink;
+        }
+
+        /*name-size */
+        #name-small:checked~ .layout .profile-name{
+            font-size:2rem;
+        }
+
+        #name-medium:checked~ .layout .profile-name{
+            font-size:2.35rem;
+        }
+
+        #name-large:checked~ .layout .profile-name{
+            font-size:2.75rem;
+        }
+
+        /*namestyle*/
+        #style-normal:checked~.layout .profile-name{
+            text-transform:none;
+        }
+
+        #style-upper:checked~.layout .profile-name{
+            text-transform:uppercase;
+        }
+
+        /*namecolor*/
+        #color-dark:checked~.layout .profile-name{
+            color:black;
+        }
+
+        #color-blue:checked ~.layout .profile-name{
+            color:blue;
+        }
+
+        #color-red:checked~.layout .profile-name{
+            color:red;
+        }
+
+       /* textalign*/
+        #align-left:checked~.layout .profile-card{
+            text-align:left;
+        }
+
+        #align-center:checked~.layout .profile-card{
+            text-align:center;
+        }
+
+        #align-right:checked~.layout .profile-card{
+            text-align:right;
+        }
+        /*jonsize*/
+        #job-small:checked ~.layout .profile-job{
+            font-size:0.9rem;
+        }
+
+        #job-medium:checked ~.layout .profile-job{
+            font-size:1.1rem;
+        }
+
+        #job-large:checked~.layout .profile-job{
+            font-size:1.3rem;
+        }
+
+        /*job-letter-spacing*/
+        #space-tight:checked~.layout .profile-job{
+            letter-spacing:-0.03em;
+        }
+
+        #space-normal:checked~.layout .profile-job{
+            letter-spacing:0.02em;
+        }
+
+        #space-wide:checked~.layout .profile-job{
+            letter-spacing:0.18em;
+        }
+
+        /*description size */
+        #desc-small:checked ~.layout .profile-desc{
+            font-size:0.9rem;
+        }
+
+        #desc-medium:checked~.layout .profile-desc{
+            font-size:1rem;
+        }
+        
+        #desc-large:checked~.layout .profile-desc{
+            font-size:1.125rem;
+        } 
+
+        /*description line height  */
+        #line-tight:checked~.layout .profile-desc{
+            line-height:1.6;
+        }
+
+        #line-normal:checked~.layout .profile-desc{
+            line-height:1.8;
+        }
+
+        #line-loose:checked~ .layout .profile-desc{
+            line-height:2;
+        }
+
+        /*button color */
+        #btn-dark:checked ~.layout .btn-contact{
+            background:#1a1a1a;
+            color:white;
+        }
+
+        #btn-blue:checked ~.layout .btn-contact{
+            background:blue;
+            color:white;
+        }
+
+        #btn-light:checked ~ .layout .btn-contact{
+            background:#f5f5f5;
+            color:black;
+        }
+    </style>
+</head>
+<body>
+    <input class="state-input" type="radio" name="bg-theme" id="bg-light">
+    <input class="state-input" type="radio" name="bg-theme" id="bg-gray">
+    <input class="state-input" type="radio" name="bg-theme" id="bg-yellow">
+    <input class="state-input" type="radio" name="bg-theme" id="bg-blue" checked>
+    <input class="state-input" type="radio" name="bg-theme" id="bg-pink">
+
+    <input class="state-input" type="radio" name="name-size" id="name-small">
+    <input class="state-input" type="radio" name="name-size" id="name-medium">
+    <input class="state-input" type="radio" name="name-size" id="name-large" checked>
+
+    <input class="state-input" type="radio" name="name-style" id="style-normal">
+    <input class="state-input" type="radio" name="name-style" id="style-upper" checked>
+    
+    <input class="state-input" type="radio" name="name-color" id="color-dark">
+    <input class="state-input" type="radio" name="name-color" id="color-blue" checked>
+    <input class="state-input"  type="radio" name="name-color" id="color-green">
+    <input class="state=input" type="radio" name="name-color" id="color-red" hidden>
+
+    <input class="state-input" type="radio" name="profile-align" id="align-left">
+    <input class="state-input" type="radio" name="profile-align" id="align-center" checked>
+    <input class="state-input" type="radio" name="profile-align" id="align-right">
+    
+    <input class="state-input" type="radio" name="job-size" id="job-small">
+    <input class="state-input" type="radio" name="job-size" id="job-medium">
+    <input class="state-input" type="radio" name="job-size" id="job-large" checked>
+    <input class="state-input" type="radio" name="job-spacing" id="spacing-tight">
+    <input class="state-input" type="radio" name="job-spacing " id="spacing-normal">
+    <input class="state-input" type="radio" name="job-spacing" id="spacing-wide" checked>
+
+    <input class="state-input" type="radio" name="desc-size" id="desc-small">
+    <input class="state-input" type="radio" name="desc-size" id="desc-medium">
+    <input class="state-input" type="radio" name="desc-size " id="desc-large" checked>
+
+    <input class="state-input" type="radio" name="desc-line" id="line-tight">
+    <input class="state-input" type="radio" name="desc-line" id="line-normal">
+    <input class="state-input" type="radio" name="desc-line" id="line-losse" checked>
+
+    <input class="state-input" type="radio" name="button-color" id="btn-dark">
+    <input class="state-input" type="radio" name="button-color" id="btn-blue" checked>
+    <input class="state-input" type="radio" name="button-color" id="btn-light">
+
+    <div class="layout">
+        <div class="control-panel">
+            <h2 class="panel-title">Tùy chỉnh hồ sơ</h2>
+            
+            <div class="control-group">
+                <h3>1. Màu nền hồ sơ</h3>
+                <label for="bg-light">Light</label>
+                <label for="bg-gray">Gray</label>
+                <label for="bg-yellow">Yellow</label>
+                <label for="bg-blue">Blue</label>
+                <label for="bg-pink">Pink</label>
+            </div>
+
+            <div class="control-group">
+                <h3>2. Kích thước tên</h3>
+                <label for="name-small">Small</label>
+                <label for="name-medium">Medium</label>
+                <label for="name-large">Large</label>
+            </div>
+
+            <div class="control-group">
+                <h3>3. Kiểu chữ tên</h3>
+                <label for="name-normal">Normal</label>
+                <label for="name-medium">Medium</label>
+                <label for="name-large">Large</label>
+            </div>
+
+            <div class="control-group">
+                <h3>3. Kiểu chữ tên</h3>
+                <label for="style-normal">Normal</label>
+                <label for="style-upper">Uppercase</label>
+            </div>
+
+            <div class="control-group">
+                <h3>4. Màu chữ tên</h3>
+                <label for="color-dark">Dark</label>
+                <label for="color-blue">Blue</label>
+                <label for="color-green">Green</label>
+                <label for="color-red">Red</label>
+            </div>
+
+            <div class="control-group">
+                <h3>5. Căn lề hồ sơ</h3>
+                <label for="align-left">Left</label>
+                <label for="align-center">Center</label>
+                <label for="align-right">Right</label>
+            </div>
+
+            <div class="control-group">
+                <h3>6. Kích thước nghề nghiệp</h3>
+                <label for="job-small">Small</label>
+                <label for="job-medium">Medium</label>
+                <label for="job-large">Large</label>
+            </div>
+
+            <div class="control-group">
+                <h3>7. Khoảng cách chữ nghề nghiệp</h3>
+                <label for="space-tight">Tight</label>
+                <label for="space-normal">Normal</label>
+                <label for="space-wide">Wide</label>
+            </div>
+
+            <div class="control-group">
+                <h3>8. Kích thước mô tả</h3>
+                <label for="desc-small">Small</label>
+                <label for="desc-medium">Medium</label>
+                <label for="desc-large">Large</label>
+            </div>
+
+            <div class="control-group">
+                <h3>9. Giãn dòng mô tả</h3>
+                <label for="line-tight">Tight</label>
+                <label for="line-normal">Normal</label>
+                <label for="line-loose">Loose</label>
+            </div>
+
+            <div class="control-group">
+                <h3>10. Màu nút liên hệ</h3>
+                <label for="btn-dark">Dark</label>
+                <label for="btn-blue">Blue</label>
+                <label for="btn-light">Light</label>
+            </div>
+        </div>
+
+        <div class="preview-area">
+            <h2 class="preview-title">Preview hồ sơ cá nhân</h2>
+
+            <div class="profile-card">
+                <h1 class="profile-name">Nguyễn Minh Khoa</h1>
+
+                <div class="profile-job">Frontend Developer . Ho Chi Minh City</div>
+
+                <p class="profile-desc">
+                    Tôi là một lập trình viên Frontend với hơn 3 năm kinh nghiệm xây dựng gioa diện web hiện đại,
+                    tập trung vào hiệu suất và trải nghiệm người dùng. Tôi yêu thích việc biến ý tưởng sáng tạo thành sản phẩn thức tế.
+                </p>
+
+                <div class="list-tile">Kỹ năng</div>
+                <div class="skill-list">
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>JavaScript</span>
+                    <span>React</span>
+                    <span>Figma</span>
+                    <span>Git</span>
+                </div>
+
+                <div class="list-tile">Sở thích</div>
+                <div class="hobby-list">
+                    <span>Nhiếp ảnh</span>
+                    <span>Đọc sách</span>
+                    <span>Du lịch</span>
+                    <span>Cà phê</span>
+                </div>
+
+                <a class="btn-contact" href="#">Liên hệ với tôi</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
