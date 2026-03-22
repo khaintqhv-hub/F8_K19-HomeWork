@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toast Notification</title>
+</head>
+<style>
+    *{
+        box-sizing:border-box;
+    }
+    body{
+        font-family:Arial, sans-serif;
+        padding:50px
+    }
+
+    .toast{
+        display:none;
+        border-radius:5px solid greenyellow;
+        margin-left:30px;
+        padding:20px;
+        background:greenyellow;
+        
+    }
+
+    .open{
+        display:inline-block;
+        padding:12px 20px;
+        color:white;
+        cursor:pointer;
+        background:#444;
+    }
+
+    .close{
+        margin-left:15px;
+        padding:5px 10px;
+        background:#388e3c;
+        color:white;
+        cursor:pointer;
+    }
+
+    .open:hover{
+        background:#222;
+    }
+
+    .close:hover{
+        background:#2e7d32;
+    }
+
+    #toast-toggle:checked ~ .toast{
+        display:inline-block;
+    }
+</style>
+<body>
+  <input type="checkbox" id="toast-toggle" hidden>
+
+    <!-- Nút mở -->
+  <label for="toast-toggle" class="open">Hiện thông báo</label>
+
+    <!-- toast -->
+  <div class="toast">
+    🎉 Lưu thành công!
+
+     <!-- nút đóng -->
+      <label for="toast-toggle" class="close">x</label>
+  </div>
+</body>
+</html>
