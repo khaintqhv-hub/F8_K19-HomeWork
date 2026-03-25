@@ -1,0 +1,159 @@
+/* Root */
+:root{
+    font-size:16px;
+}
+
+/* Reset */
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+}
+
+h2{
+    text-align:center;
+    color:#1e293b;
+    margin-bottom:1rem;
+}
+
+/* chỉnh cho label đẹp hơn */
+.form-group label{
+    display:inline-block;
+    margin-bottom:0.5rem;
+    color:#334155;
+    font-size:0.875rem;
+}
+/* Background */
+.main{
+    height:100vh;
+    text-align:center;
+    background-image:linear-gradient(135deg, #a855f7, #c084fc);
+}
+
+/* Btn open */
+.btn-open{
+    display:inline-block;
+    margin-top:20rem;
+    background:#f05123;
+    color:#fff;
+    padding:1rem 2rem;
+    border-radius:2rem;
+    cursor:pointer;
+}
+
+/* overlay */
+.overlay{
+    display:none;
+}
+
+#toggle-modal:checked ~ .overlay{
+    display:block;
+}
+
+/* nền dark */
+.overlay-bg{
+    position:fixed;
+    top:0;
+    left:0;
+    height:100vh;
+    width:100%;
+    background:rgba(0,0,0,0.5);
+}
+
+/* Modal */
+.modal{
+    position:fixed;
+    width:25rem;
+    top:10rem;
+    left:0;
+    right:0;
+    margin:0 auto;
+    background:#fff;
+    padding:1.5rem;
+    border-radius:0.5rem;
+    z-index:10;
+}
+
+/* đóng btn */
+.btn-close{
+    position:absolute;
+    top:0.5rem;
+    right:0.75rem;
+    cursor:pointer;
+}
+
+/* Form */
+.form-group{
+    margin-bottom:1rem;
+}
+
+input{
+    width:100%;
+    padding:0.5rem;
+    border:0.0625rem solid #e2e8f0;
+    background:#f8fafc;
+}
+
+/* required */
+.required{
+    color:#ef4444;
+}
+
+/* checkbox */
+.checkbox-item{
+    margin-top:0.5rem;
+}
+
+/* Button submit */
+.btn-submit{
+    width:100%;
+    background:#a855f7;
+    color:white;
+    border:none;
+    cursor:pointer;
+    padding:0.75rem;
+}
+
+.btn-submit:hover{
+    background:#9333ea;
+}
+/* tooltip */
+
+.tooltip-parent{
+    position:relative;
+}
+
+/* tooltip box */
+.tooltip{
+    position:absolute;
+    bottom:100%;
+    left:0;
+    background:#1e293b;
+    color:#ffffff;
+    padding:0.5rem;
+    font-size:0.75rem;
+    white-space:normal;
+    margin-bottom:0.5rem;
+    visibility:hidden;
+    opacity:0;
+}
+
+/* arrow */
+.tooltip::after{
+    content:"";
+    position:absolute;
+    bottom:-0.4rem;
+    left:0.5rem;
+    border-width:0.4rem;
+    border-style:solid;
+    border-color:#1e293b transparent transparent transparent;
+}
+
+.tooltip-parent:hover .tooltip{
+    visibility: visible;
+    opacity:1;
+}
