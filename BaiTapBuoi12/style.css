@@ -1,0 +1,150 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Bien Mau */
+:root {
+    --bg-main: #ebf5fe;
+    --text-main: #666666;
+    --title-color: #333333;
+    --link-color: #2196f3;
+    --card-border: #e0e0e0;
+
+    --red: #ff6b6b;
+    --green: #4ecdc4;
+    --orange: #f9a825;
+    --blue: #5e9cff;
+    --purple: #9b59b6;
+    --leaf: #7cb342;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #ffffff;
+    color: var(--text-main);
+}
+
+/* khung bao boc */
+.services-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    background-color: var(--bg-main);
+    padding: 30px;
+    border-radius: 8px;
+}
+
+/* Layout */
+.services {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* 3 the / hang */
+.service-card {
+    flex: 1 1 calc((100% - 40px) / 3);
+    min-width: 0;
+    background: #ffffff;
+    border: 2px solid var(--card-border);
+    border-radius: 8px;
+    padding: 30px;
+    transition: border-color 0.25s ease, border-width 0.25s ease, transform 0.25s ease;
+}
+
+/* Icon */
+.service-card-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-card-icon i {
+    font-size: 32px;
+    line-height: 1;
+}
+
+.service-card-icon-red {
+    background-color: var(--red);
+}
+
+.service-card-icon-green {
+    background-color: var(--green);
+}
+
+.service-card-icon-orange {
+    background-color: var(--orange);
+}
+
+.service-card-icon-blue {
+    background-color: var(--blue);
+}
+
+.service-card-icon-purple {
+    background-color: var(--purple);
+}
+
+.service-card-icon-leaf {
+    background-color: var(--leaf);
+}
+
+/* tieude */
+.service-card-title {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--title-color);
+}
+
+/* desc */
+.service-card-desc {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    font-weight: 400;
+    color: var(--text-main);
+    font-size: 15px;
+}
+
+/* link */
+.service-card-link {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+.service-card-link:hover {
+    text-decoration: underline;
+}
+
+
+.service-card-red:hover {
+    border: 3px solid var(--red);
+}
+
+.service-card-green:hover {
+    border: 3px solid var(--green);
+}
+
+.service-card-orange:hover {
+    border: 3px solid var(--orange);
+}
+
+.service-card-blue:hover {
+    border: 3px solid var(--blue);
+}
+
+.service-card-purple:hover {
+    border: 3px solid var(--purple);
+}
+
+.service-card-leaf:hover {
+    border: 3px solid var(--leaf);
+}
