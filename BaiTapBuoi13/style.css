@@ -1,0 +1,105 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* main */
+.strips{
+    display:flex;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+}
+
+/* mỗi strip */
+.strip{
+    position:relative;
+    width:20%;
+    min-height:100vh;
+    overflow:hidden;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* hover */
+.strips:hover .strip{
+    width:20%;
+}
+
+.strips .strip:hover{
+    width:100%;
+}
+
+/* tiêu đề */
+.strip-title{
+    position:relative;
+    z-index:3;
+    color:white;
+    font-family:Helvetica, sans-serif;
+    font-size:2rem;
+    font-weight:900;
+    display:block;
+}
+
+/* ẩn tiêu đề khi hover */
+.strip:hover .strip-title{
+    display:none;
+}
+
+/* Ảnh */
+.strip-image{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:none;
+    z-index:1;
+}
+
+.strip:hover .strip-image{
+    display:block;
+}
+
+/* Overlay */
+.strip-overlay{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:black;
+    opacity:0;
+    display:none;
+    z-index:2;
+}
+
+.strip:hover .strip-overlay{
+    display:block;
+    opacity:0.1;
+}
+
+/* color */
+.strip1{
+    background:forestgreen;
+}
+
+.strip2{
+    background:khaki;
+}
+
+.strip3{
+    background:dodgerblue;
+}
+
+.strip4{
+    background:orange;
+}
+
+.strip5{
+    background:violet;
+}
