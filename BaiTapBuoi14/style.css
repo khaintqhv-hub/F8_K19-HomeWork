@@ -1,0 +1,315 @@
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 
+   2. BASE*/
+html {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ececec;
+  color: #333333;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+/*
+   3. HEADER
+ */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #333333;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.header__logo {
+  position: relative;
+  z-index: 1001;
+  font-size: 2rem;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 0.3px;
+}
+
+.header__nav {
+  display: block;
+}
+
+.header__hamburger {
+  display: none;
+  position: relative;
+  z-index: 1000;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 28px;
+}
+
+/* 
+   4. NAV*/
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav__link {
+  color: #ffffff;
+  font-size: 0.95rem;
+  transition: opacity 0.3s ease;
+}
+
+.nav__link:hover {
+  opacity: 0.75;
+}
+
+/*
+   5. OVERLAY
+ */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  cursor: pointer;
+  z-index: 998;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* 
+   6. SIDEBAR
+*/
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100vh;
+  padding: 2rem;
+  background-color: #3a3a3a;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: right 0.3s ease;
+}
+
+.nav--mobile .nav__list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  margin-top: 2rem;
+}
+
+.nav--mobile .nav__link {
+  display: block;
+  padding: 1rem;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav__close-btn {
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 28px;
+}
+
+.nav__close-btn i {
+  transition: transform 0.3s ease;
+}
+
+.nav__close-btn:hover i {
+  transform: rotate(90deg);
+}
+
+/* 
+   7. CHECKBOX HACK
+*/
+.menu-toggle:checked ~ .overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu-toggle:checked ~ .sidebar {
+  right: 0;
+}
+
+/*
+   8. MAIN LAYOUT
+ */
+.container {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.container__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.container__sidebar {
+  width: 300px;
+  min-height: 520px;
+  padding: 2rem 1.5rem;
+  background-color: #3a3a3a;
+  color: #ffffff;
+}
+
+.sidebar-box__text {
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+/* 
+   9. TYPOGRAPHY
+ */
+.main-heading {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.content-text {
+  margin-bottom: 1.25rem;
+  color: #555555;
+}
+
+/* 
+   10. CARDS*/
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  width: calc((100% - 2rem) / 3);
+  border: 2px solid #1f1f1f;
+  background-color: #f9f9f9;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.card__header {
+  padding: 0.9rem 1rem;
+  background-color: #333333;
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.card__body {
+  padding: 1rem;
+  color: #555555;
+  background-color: #ffffff;
+}
+
+/* 
+   11. TABLET */
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem;
+  }
+
+  .header__nav {
+    display: none;
+  }
+
+  .header__hamburger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container {
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  .container__sidebar {
+    width: 250px;
+    min-height: 420px;
+  }
+
+  .card {
+    width: calc((100% - 1rem) / 2);
+  }
+}
+
+/* 12. MOBILE <= 480px */
+@media (max-width: 480px) {
+  .header {
+    padding: 1rem;
+  }
+
+  .header__logo {
+    font-size: 1.85rem;
+  }
+
+  .container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .container__sidebar {
+    width: 100%;
+    min-height: auto;
+  }
+
+  .main-heading {
+    font-size: 1.5rem;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .sidebar {
+    right: -280px;
+    width: 280px;
+    padding: 2rem 1.5rem;
+  }
+
+  .menu-toggle:checked ~ .sidebar {
+    right: 0;
+  }
+}
