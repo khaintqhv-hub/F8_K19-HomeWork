@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Hóa đơn bán lẻ - WinMark</title>
+  <style>
+    body { font-family:'Segoe UI', Arial; background:#f4f6f8; margin:0; }
+    .page { width:800px; margin:30px auto; padding:40px; background:#fff; border-radius:16px; box-shadow:0 12px 40px rgba(0,0,0,0.08);}
+    .invoice-header { display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:20px; align-items:center; }
+    .brand { display:flex; align-items:center; gap:12px; }
+    .badge { background:#e0f7f1; color:#009b72; padding:4px 12px; border-radius:20px; font-weight:700; margin-bottom:8px; display:inline-block; }
+    .party-grid { display:flex; justify-content:space-between; margin:30px 0; }
+    .party { width:48%; border-top:1px solid #eee; padding-top:16px; }
+    .items-table { width:100%; border-collapse:collapse; margin-bottom:20px; }
+    .items-table th { background:#f4f7fa; font-weight:600; padding:12px; border:1px solid #ddd; }
+    .items-table td { border:1px solid #ddd; padding:12px; text-align:center; }
+    .items-table tbody tr:nth-child(even){ background:#fafafa; }
+    .items-table tbody tr:hover{ background:#f0fdfd; }
+    .bottom { display:flex; justify-content:space-between; margin-top:30px; }
+    .promotion-box { display:flex; gap:12px; background:#f0fdfd; padding:16px; border-radius:12px; align-items:center; }
+    .promotion-icon { width:28px; height:28px; background:#009b72; color:#fff; display:flex; justify-content:center; align-items:center; border-radius:8px; font-weight:800; }
+    .totals .total-row { display:flex; justify-content:space-between; margin-bottom:8px; font-weight:600; }
+    .discount-row { color:#009b72; }
+    .grand-total { display:flex; justify-content:space-between; font-size:22px; font-weight:900; margin-top:12px; }
+    .actions { text-align:right; margin:20px auto; width:800px; }
+    button { padding:10px 20px; border:none; background:#111827; color:#fff; border-radius:10px; cursor:pointer; font-weight:700; }
+  </style>
+</head>
+<body>
+  <div class="actions">
+    <button onclick="window.print()">In hóa đơn</button>
+  </div>
+  <div class="page" id="invoice-root">
+    
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>
