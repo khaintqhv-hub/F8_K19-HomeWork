@@ -1,0 +1,48 @@
+<!DOCTYPE htmL>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Fakestore - Danh sách sản phẩm</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo">
+                <i class="fa-solid fa-store"></i>
+                <span>Fakestore</span>
+            </div>
+
+            <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm...."/>
+
+            <div class="cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cartCount">0</span>
+            </div>
+        </header>
+
+        <div class="container">
+            <aside class="sidebar">
+                <h3><i class="fa-solid fa-list"></i> Danh mục sản phẩm</h3>
+
+                <button class="category-btn active" data-category="all">
+                    Tất cả sản phẩm <span id="totalCount">0</span>
+                </button>
+
+                <div id="categoryList"></div>
+            </aside>
+
+            <main class="content">
+                <h1>Tất cả sản phẩm</h1>
+                <p id="productCount">Đang tải sản phẩm...</p>
+
+                <div id="loading">Đang tải dữ liệu...</div>
+                <div id="error"></div>
+                <div class="product-grid" id="productGrid"></div>
+            </main>
+        </div>
+
+        <script src="index.js"></script>
+    </body>
+</html>
