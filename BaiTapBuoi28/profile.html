@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<body>
+    <h2>Thông tin người dùng</h2>
+    <div id="profile"></div>
+    <button onclick="logout()">Đăng xuất</button>
+
+    <script src="auth.js">
+
+    </script>
+    <script>
+        async function loadProfile(){
+            const response =await authFetch("/profile",{
+                method:"GET"
+            });
+            if(!response){
+                return;
+            }
+            if(!response.ok){
+                document.getElementById("profile").innerHTML="Không thể tải thông tin người dùng";
+                return;
+            }
+            const user=await response.json();
+            document.getElementById("profile").innerHTML=`
+            <p><strong>ID:</strong>${user.id}</p>
+            <p><strong>Username:</strong>${user.name}</p>
+            <p><strong>Email:</strong>${user.email}</p>
+            `;
+        }
+
+        function logout(){
+            clearTokens();
+            window.location.href="/login.html";
+        }
+        loadProfile();
+    </script>
+</body>
+</html>
