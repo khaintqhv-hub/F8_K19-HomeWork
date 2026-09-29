@@ -1,0 +1,22 @@
+services:
+  web:
+    container_name: f8-k19-docker-web
+    image: bangtxf8/f8-k19:latest
+    # working_dir: /app/web
+    volumes:
+      - ./web01:/app/web
+    ports:
+      - 5173:5173
+    command: ['npm', 'run', 'dev', '--', '--host']
+
+  db:
+    container_name: f8-k19-docker-db
+    image: postgres:17
+    ports:
+      - 4000:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: default
+    volumes:
+      - ./db:/var/lib/postgresql/data
